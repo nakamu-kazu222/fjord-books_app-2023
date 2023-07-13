@@ -185,3 +185,13 @@ ja:
     title: 書籍名
     memo: メモ
     author: 著者
+    picture: 画像
+    show_book: 書籍を閲覧
+    new_book: 書籍を登録
+    edit_book: 書籍を編集
+    back_book: 前に戻る
+    destroy_book: 書籍を削除
+    new_title: 新しい書籍
+    index_title: 書籍一覧
+    edit_title: 書籍を編集
+

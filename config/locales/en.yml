@@ -219,4 +219,12 @@ en:
     title: Title
     memo: Memo
     author: Author
-
+    picture: Picture
+    show_book: Show book
+    new_book: New book
+    edit_book: Edit this book
+    back_book: Back to books
+    destroy_book: Destroy this book
+    new_title: New book
+    index_title: Books
+    edit_title: Edit Title
