@@ -23,7 +23,7 @@ class Admin::BlogsController < ApplicationController
     if @blog.save
       redirect_to admin_blog_url(@blog), notice: 'blog was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end      
 
@@ -31,7 +31,7 @@ class Admin::BlogsController < ApplicationController
     if @blog.update(blog_params)
       redirect_to admin_blog_url(@blog), notice: 'blog was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
