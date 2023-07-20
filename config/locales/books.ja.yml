@@ -3,15 +3,15 @@ ja:
   activerecord:
     attributes:
       books: 
-        title: 書籍名
+        title: 書籍
         memo: メモ
         author: 著者
         picture: 画像
-        show: 書籍を閲覧
-        new: 書籍を登録
-        edit: 書籍を編集
+        show: "%{resource}を閲覧"
+        new: "%{resource}を登録"
+        edit: "%{resource}を編集"
         back: 前に戻る
-        destroy: 書籍を削除
-        new_title: 新しい書籍
-        index_title: 書籍一覧
-        edit_title: 書籍を編集
+        destroy: "%{resource}を削除"
+        new_title: "新しい%{resource}"
+        index_title: "%{resource}一覧"
+        edit_title: "%{resource}を編集"
