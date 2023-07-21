@@ -1,9 +1,9 @@
-<h1><%= t('activerecord.attributes.books.new_title',resource: t('activerecord.attributes.books.title')) %></h1>
+<h1><%= t('views.common.new_title',resource: Book.model_name.human) %></h1>
 
 <%= render "form", book: @book %>
 
 <br>
 
 <div>
-  <%= link_to t('activerecord.attributes.books.back'), books_path %>
+  <%= link_to t('views.common.back'), books_path %>
 </div>

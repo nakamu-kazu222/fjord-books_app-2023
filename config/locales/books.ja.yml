@@ -2,9 +2,9 @@
 ja: 
   activerecord:
     models:
-      books: 書籍
+      book: 書籍
     attributes:
-      books: 
+      book: 
         title: タイトル
         memo: メモ
         author: 著者
