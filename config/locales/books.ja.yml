@@ -1,12 +1,16 @@
 ---
 ja: 
   activerecord:
+    models:
+      books: 書籍
     attributes:
       books: 
-        title: 書籍
+        title: タイトル
         memo: メモ
         author: 著者
         picture: 画像
+  views: 
+    common:
         show: "%{resource}を閲覧"
         new: "%{resource}を登録"
         edit: "%{resource}を編集"
