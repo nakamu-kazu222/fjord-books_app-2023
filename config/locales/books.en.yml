@@ -1,0 +1,21 @@
+---
+en:
+  activerecord:
+    models:
+      book: Book
+    attributes:
+      book: 
+        title: Title
+        memo: Memo
+        author: Author
+        picture: Picture
+  views: 
+    common:
+        show: "Show %{resource}"
+        new: "New %{resource}"
+        edit: "Edit this %{resource}"
+        back: Back to book
+        destroy: "Destroy this %{resource}"
+        new_title: "New %{resource}"
+        index_title: "%{resource}s"
+        edit_title: "Edit %{resource}"
