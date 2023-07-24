@@ -80,3 +80,5 @@ end
 gem 'carrierwave'
 
 gem 'rails-i18n'
+
+gem 'kaminari'
