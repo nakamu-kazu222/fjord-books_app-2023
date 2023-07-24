@@ -1,7 +1,5 @@
 class Admin::Blog < ApplicationRecord
-  validates :title, :content, presence: true, if: :title_or_content_present?
-
-  def title_or_content_present?
-    title.present? || content.present?
-  end
+  include ActiveModel::Validations
+  validates :title, :content, presence: true
+  validates_with MyValidator
 end
