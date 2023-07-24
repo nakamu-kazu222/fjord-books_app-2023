@@ -12,3 +12,5 @@
 </div>
 
 <%= link_to t('views.common.new',resource: Book.model_name.human), new_book_path %>
+
+<%= paginate @books %>
