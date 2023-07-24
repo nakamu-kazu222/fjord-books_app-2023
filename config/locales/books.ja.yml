@@ -19,3 +19,9 @@ ja:
         new_title: "新しい%{resource}"
         index_title: "%{resource}一覧"
         edit_title: "%{resource}を編集"
+    pagination:
+        first: '最初'
+        last: '最後'
+        previous: '前'
+        next: '次'
+        truncate: '...'
