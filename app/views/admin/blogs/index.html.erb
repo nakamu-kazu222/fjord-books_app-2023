@@ -4,7 +4,7 @@
 
 <div id="blogs">
   <% @blogs.each do |blog| %>
-    <%= render blog %>
+    <%= render 'shared/blog_item', blog: blog %>
     <p>
       <%= link_to "Show this blog", admin_blog_path(blog) %>
     </p>
