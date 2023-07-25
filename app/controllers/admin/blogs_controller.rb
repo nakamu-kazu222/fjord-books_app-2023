@@ -2,6 +2,8 @@
 
 class Admin::BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
+  after_action :show_alert_after_action, only: %i[show edit update destroy]
+  around_action :show_alert_around_action, only: %i[show edit update destroy]
 
   def index
     @blogs = Admin::Blog.all
@@ -48,5 +50,17 @@ class Admin::BlogsController < ApplicationController
 
   def blog_params
     params.require(:admin_blog).permit(:title, :content)
+  end
+
+  def show_alert_after_action
+    puts 'After Action!'
+  end  
+
+  def show_alert_around_action
+    puts 'Around Action: Something is about to happen!'
+
+    yield
+
+    puts 'Around Action: Something happened!'
   end
 end
