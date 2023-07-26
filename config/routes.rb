@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :books
   
-  scope :admin do
+  scope module: :admin, as: :admin do
     resources :blogs
   end
 
