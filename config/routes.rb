@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :books
   
-  namespace :admin do
+  scope :admin do
     resources :blogs
   end
 
