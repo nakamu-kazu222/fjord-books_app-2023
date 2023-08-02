@@ -28,3 +28,10 @@ ja:
     layouts:
       application: 
         logout: ログアウト 
+    devise:
+      registrations:
+        new:
+          user_name: ユーザー名
+          postal_code: 郵便番号
+          address: 住所
+          introduction: 自己紹介
