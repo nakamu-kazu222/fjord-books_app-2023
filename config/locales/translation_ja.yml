@@ -9,3 +9,22 @@ ja:
         memo: メモ
         picture: 画像
         title: タイトル
+  helpers:
+    submit:
+      update: 更新
+
+  views:
+    users:
+      index:
+        title: ユーザー一覧
+        edit: 編集
+      edit:
+        title: アカウント編集
+        update: 更新
+      show:
+        title: ユーザー詳細
+        user_name: ユーザー名
+        mail_address: メールアドレス
+    layouts:
+      application: 
+        logout: ログアウト 

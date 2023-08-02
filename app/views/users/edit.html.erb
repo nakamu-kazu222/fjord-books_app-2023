@@ -1,4 +1,4 @@
-<h1>Account Edit</h1>
+<h1><%= t('views.users.edit.title') %></h1>
 
 <%= form_for @user do |f| %>
   <%= f.label :email %>
@@ -10,5 +10,5 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 
-  <%= f.submit "Update" %>
+  <%= f.submit t('views.users.edit.update') %>
 <% end %>
