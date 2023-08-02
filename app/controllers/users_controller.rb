@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: %i[edit update]
+  before_action :set_user, only: %i[show edit update]
 
   def index
     @users = User.page(params[:page]).per(2)
@@ -11,14 +13,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    redirect_to root_path, alert: "Cannot edit information for other users" unless @user == current_user
+    redirect_to root_path, alert: 'Cannot edit information for other users' unless @user == current_user
   end
 
   def update
     @user = current_user
 
     if @user.update(user_params)
-      redirect_to root_path, notice: "Your account information has been updated"
+      redirect_to root_path, notice: 'Your account information has been updated'
     else
       render :edit
     end

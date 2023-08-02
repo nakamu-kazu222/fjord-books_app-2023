@@ -9,9 +9,7 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create; end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -25,6 +23,6 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
   end
 end
