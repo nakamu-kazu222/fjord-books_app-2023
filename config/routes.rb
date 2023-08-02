@@ -10,10 +10,14 @@ Rails.application.routes.draw do
   get "users/:id" => "users#show", as: :user
   get "users/:id/edit" => "users#edit", as: :edit_user
   patch "users/:id" => "users#update"
-  
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
   root "books#index"
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
