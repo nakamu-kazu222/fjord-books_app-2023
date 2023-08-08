@@ -7,6 +7,11 @@
       <p>
         <%= link_to t('views.common.show', name: User.model_name.human.downcase), user %>
       </p>
+      <p>
+        <% if user.user_icon.attached? %>
+          <%= image_tag user.user_icon %>
+        <% end %>
+      </p>      
     </div>
   <% end %>
 </div>
