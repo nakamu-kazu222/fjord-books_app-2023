@@ -9,7 +9,7 @@
       </p>
       <p>
         <% if user.user_icon.attached? %>
-          <%= image_tag user.user_icon %>
+          <%= image_tag user.user_icon.variant( resize: "100x100^", gravity: "center", crop: "100x100+0+0" ) %>
         <% end %>
       </p>      
     </div>

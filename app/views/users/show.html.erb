@@ -12,7 +12,7 @@
   <% if @user.user_icon.attached? %>
     <p>
       <strong><%= User.human_attribute_name(:user_icon) %>:</strong>
-      <%= image_tag @user.user_icon %>
+      <%= image_tag @user.user_icon.variant( resize: "100x100^", gravity: "center", crop: "100x100+0+0" ) %>
     </p>
   <% end %>
 </nav>
