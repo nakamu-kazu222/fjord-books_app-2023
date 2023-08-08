@@ -9,4 +9,10 @@
     <%= link_to t('views.common.edit', name: User.model_name.human.downcase), edit_user_registration_path %> |
   <% end %>
   <%= link_to t('views.common.back', name: i18n_pluralize(User.model_name.human.downcase)), users_path %>
+  <% if @user.user_icon.attached? %>
+    <p>
+      <strong><%= User.human_attribute_name(:user_icon) %>:</strong>
+      <%= image_tag @user.user_icon %>
+    </p>
+  <% end %>
 </nav>
