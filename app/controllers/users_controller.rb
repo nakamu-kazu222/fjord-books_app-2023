@@ -13,14 +13,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    redirect_to root_path, alert: 'Cannot edit information for other users' unless @user == current_user
+    redirect_to root_path, alert: t('controllers.users.edit.unauthorized') unless @user == current_user
   end
 
   def update
     @user = set_user
 
     if @user.update(user_params)
-      redirect_to root_path, notice: 'Your account information has been updated'
+      redirect_to root_path, notice: t('controllers.users.update.success')
     else
       render :edit
     end

@@ -9,3 +9,10 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+
+  controllers:
+    users:
+      edit:
+        unauthorized: 'Cannot edit information for other users'
+      update:
+        success: 'Your account information has been updated'

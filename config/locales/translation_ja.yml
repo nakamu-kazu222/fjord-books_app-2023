@@ -35,3 +35,10 @@ ja:
           postal_code: 郵便番号
           address: 住所
           introduction: 自己紹介
+
+  controllers:
+    users:
+      edit:
+        unauthorized: '他のユーザーの情報を編集することはできません'
+      update:
+        success: 'アカウント情報が更新されました'
