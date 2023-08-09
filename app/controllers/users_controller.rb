@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
+    @user = set_user
 
     if @user.update(user_params)
       redirect_to root_path, notice: 'Your account information has been updated'
