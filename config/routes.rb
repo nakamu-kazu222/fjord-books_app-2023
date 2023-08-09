@@ -6,11 +6,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  get "users/index" => "users#index", as: :users
-  get "users/:id" => "users#show", as: :user
-  get "users/:id/edit" => "users#edit", as: :edit_user
-  patch "users/:id" => "users#update"
-
+  resources :users, only: %i[index show edit update]
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
