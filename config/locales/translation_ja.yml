@@ -13,32 +13,30 @@ ja:
     submit:
       update: 更新
 
-  views:
-    users:
-      index:
-        title: ユーザー一覧
-        edit: 編集
-      edit:
-        title: アカウント編集
-        update: 更新
-      show:
-        title: ユーザー詳細
-        user_name: ユーザー名
-        mail_address: メールアドレス
-    layouts:
-      application: 
-        logout: ログアウト 
-    devise:
-      registrations:
-        new:
-          user_name: ユーザー名
-          postal_code: 郵便番号
-          address: 住所
-          introduction: 自己紹介
+  users:
+    index:
+      title: ユーザー一覧
+      edit: 編集
+    edit:
+      title: アカウント編集
+      update: 更新
+      unauthorized: '他のユーザーの情報を編集することはできません'
+    show:
+      title: ユーザー詳細
+      user_name: ユーザー名
+      mail_address: メールアドレス
+    update:
+      success: 'アカウント情報が更新されました'
 
-  controllers:
-    users:
-      edit:
-        unauthorized: '他のユーザーの情報を編集することはできません'
-      update:
-        success: 'アカウント情報が更新されました'
+  layouts:
+    application: 
+      logout: ログアウト 
+      title: ユーザー一覧
+      
+  devise:
+    registrations:
+      new:
+        user_name: ユーザー名
+        postal_code: 郵便番号
+        address: 住所
+        introduction: 自己紹介

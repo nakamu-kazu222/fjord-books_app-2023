@@ -1,4 +1,4 @@
-<h1><%= t('views.users.edit.title') %></h1>
+<h1><%= t('.title') %></h1>
 
 <%= form_for @user do |f| %>
   <%= f.label :email %>
@@ -7,5 +7,5 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <%= f.submit t('views.users.edit.update') %>
+  <%= f.submit t('.update') %>
 <% end %>

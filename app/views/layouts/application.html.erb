@@ -14,10 +14,10 @@
     <header>
       <% if user_signed_in? %>
         <li>
-          <%= link_to t('views.layouts.application.logout'), destroy_user_session_path, method: :delete %>
+          <%= link_to t('.logout'), destroy_user_session_path, method: :delete %>
         </li>
         <li>
-          <%= link_to t('views.users.index.title'), users_path %>
+          <%= link_to t('.title'), users_path %>
         </li>
       <% end %>
     </header>
