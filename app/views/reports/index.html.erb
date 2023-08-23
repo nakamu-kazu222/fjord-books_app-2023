@@ -1,0 +1,9 @@
+<h1>Reports</h1>
+
+<ul>
+  <% @reports.each do |report| %>
+    <li><%= link_to report.title, report_path(report) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Report', new_report_path %>
