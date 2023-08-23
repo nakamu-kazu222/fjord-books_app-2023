@@ -15,7 +15,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :content %>
+    <%= f.label Comment.human_attribute_name(:content) %>
     <%= f.text_area :content, required: true %>
   </div>
 

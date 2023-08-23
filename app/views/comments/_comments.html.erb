@@ -13,10 +13,10 @@
     </p>
     <% if current_user == comment.user %>
       <%= form_with model: [commentable, comment], url: edit_polymorphic_path([commentable, comment]), method: :get do |f| %>
-        <%= f.submit t('views.common.edit') %>
+        <%= f.submit Comment.human_attribute_name(:edit) %>
       <% end %>
       <%= form_with model: [commentable, comment], method: :delete, data: { confirm: t('views.common.delete_confirm') } do |f| %>
-        <%= f.submit t('views.common.destroy') %>
+        <%= f.submit Comment.human_attribute_name(:destroy) %>
       <% end %>
     <% end %>
   <% end %>

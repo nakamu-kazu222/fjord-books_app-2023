@@ -5,10 +5,8 @@
 <%= render 'comments/comments', commentable: @report, comments: @comments %>
 
 <% if current_user == @report.user %>
-  <%= button_to t('views.common.edit'), edit_report_path(@report), method: :get %>
-  <%= button_to t('views.common.destroy'), report_path(@report), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+  <%= button_to t('views.common.edit',name: Report.model_name.human), edit_report_path(@report), method: :get %>
+  <%= button_to t('views.common.destroy',name: Report.model_name.human), report_path(@report), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
 <% end %>
-<%= link_to t('views.common.back'), reports_path %>
+<%= link_to t('views.common.back',name: Report.model_name.human), reports_path %>
 
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>

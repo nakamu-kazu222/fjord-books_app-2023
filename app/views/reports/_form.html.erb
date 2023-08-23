@@ -16,12 +16,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label Report.human_attribute_name(:title) %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
+    <%= form.label Report.human_attribute_name(:content) %>
     <%= form.text_area :content %>
   </div>
 

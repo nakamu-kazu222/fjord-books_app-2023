@@ -1,4 +1,4 @@
-<h1>Reports</h1>
+<h1><%= Report.model_name.human %></h1>
 
 <ul>
   <% @reports.each do |report| %>
@@ -6,4 +6,4 @@
   <% end %>
 </ul>
 
-<%= link_to 'New Report', new_report_path %>
+<%= link_to Report.human_attribute_name(:new_report), new_report_path %>

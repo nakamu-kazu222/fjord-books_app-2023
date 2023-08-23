@@ -2,4 +2,4 @@
 
 <%= render 'comments/form', commentable: @commentable, comment: @comment %>
 
-<%= link_to t('views.common.back'), @commentable %>
+<%= link_to t('views.common.back',name: Comment.model_name.human), @commentable %>

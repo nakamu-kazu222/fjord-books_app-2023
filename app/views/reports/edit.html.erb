@@ -1,20 +1,5 @@
-<h1>Edit Report</h1>
+<h1><%= Report.human_attribute_name(:edit_report) %></h1>
 
-<%= form_with model: @report, local: true do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+<%= render 'form', report: @report %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<%= link_to 'Show', @report %> |
-<%= link_to 'Back', reports_path %>
+<%= link_to t('views.common.show',name: Report.model_name.human), @report %>
