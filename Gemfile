@@ -83,5 +83,6 @@ end
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
+gem 'image_processing'
+gem 'mini_magick'
 gem 'kaminari'
-gem 'image_processing', '~> 1.2'
