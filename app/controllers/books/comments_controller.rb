@@ -1,5 +1,4 @@
 class Books::CommentsController < CommentsController
-  binding.irb
   before_action :set_commentable
 
   private
