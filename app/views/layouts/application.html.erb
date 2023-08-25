@@ -11,6 +11,16 @@
   </head>
 
   <body class="<%= params[:action] %>">
+    <header>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to User.human_attribute_name(:logout), destroy_user_session_path, method: :delete %>
+        </li>
+        <li>
+          <%= link_to User.human_attribute_name(:title), users_path %>
+        </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

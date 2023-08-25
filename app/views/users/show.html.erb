@@ -1,0 +1,12 @@
+<h1><%= t('.title') %></h1>
+
+<h3><%= User.human_attribute_name(:user_name) %></h3>
+<%= @user.name %>
+<h3><%= User.human_attribute_name(:mail_address) %></h3>
+<%= @user.email %>
+<h3><%= User.human_attribute_name(:postal_code) %></h3>
+<%= @user.postal_code %>
+<h3><%= User.human_attribute_name(:address) %></h3>
+<%= @user.address %>
+<h3><%= User.human_attribute_name(:introduction) %></h3>
+<%= @user.introduction %>

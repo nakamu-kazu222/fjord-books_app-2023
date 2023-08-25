@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       book: 本
+      user: ユーザー
 
     attributes:
       book:
@@ -9,3 +10,28 @@ ja:
         memo: メモ
         picture: 画像
         title: タイトル
+      user:
+        user_name: ユーザー名
+        mail_address: メールアドレス
+        postal_code: 郵便番号
+        address: 住所
+        introduction: 自己紹介
+        logout: ログアウト 
+        title: ユーザー一覧
+
+  helpers:
+    submit:
+      update: 更新
+
+  users:
+    index:
+      title: ユーザー一覧
+      edit: 編集
+    edit:
+      title: アカウント編集
+      update: 更新
+      unauthorized: '他のユーザーの情報を編集することはできません'
+    show:
+      title: ユーザー詳細
+    update:
+      success: 'アカウント情報が更新されました'
