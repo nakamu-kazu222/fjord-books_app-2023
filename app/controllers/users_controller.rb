@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
@@ -17,8 +16,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = set_user
-
     if @user.update(user_params)
       redirect_to root_path, notice: t('controllers.users.update.success')
     else
