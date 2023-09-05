@@ -9,4 +9,3 @@
   <%= button_to t('views.common.destroy',name: Report.model_name.human), report_path(@report), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
 <% end %>
 <%= link_to t('views.common.back',name: Report.model_name.human), reports_path %>
-
