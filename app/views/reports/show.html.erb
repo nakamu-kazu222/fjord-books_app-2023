@@ -16,3 +16,10 @@
     <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
   <% end %>
 </nav>
+
+<h2>この日報に言及している日報</h2>
+<ul>
+  <% @report.mentioned_reports.each do |mentioned_report| %>
+    <li><%= link_to mentioned_report.title, report_path(mentioned_report) %></li>
+  <% end %>
+</ul>
