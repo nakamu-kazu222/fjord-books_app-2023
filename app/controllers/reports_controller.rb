@@ -64,8 +64,10 @@ def save_report_and_mention(view)
     mentioned_reports = Report.where(id: mentioned_report_ids)
     
     mentioned_reports.each do |mentioned_report|
-      mentioned_report.mentioned_reports << @report
-      mentioned_report.save
+      unless mentioned_report.mentioned_reports.include?(@report)
+        mentioned_report.mentioned_reports << @report
+        mentioned_report.save
+      end
     end
 
     redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
