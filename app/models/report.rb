@@ -5,7 +5,10 @@ class Report < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
 
   validates :title, presence: true
-  validates :content, presence: true
+  validates :content, presence: true, allow_blank: true
+
+  has_many :mentions, class_name: "ReportMention", foreign_key: "mentioning_report_id"
+  has_many :mentioned_reports, through: :mentions, source: :mentioned_report
 
   def editable?(target_user)
     user == target_user
