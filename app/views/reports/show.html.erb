@@ -17,7 +17,7 @@
   <% end %>
 </nav>
 
-<h2>この日報に言及している日報</h2>
+<h2><%=t('views.common.report_mention', name: Report.model_name.human.downcase) %></h2>
 <ul>
   <% @report.mentioned_reports.each do |mentioned_report| %>
     <li><%= link_to mentioned_report.title, report_path(mentioned_report) %></li>

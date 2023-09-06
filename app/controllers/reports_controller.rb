@@ -38,7 +38,7 @@ class ReportsController < ApplicationController
   
     redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   rescue ActiveRecord::InvalidForeignKey
-    redirect_to reports_url, alert: '日報を削除できませんでした。'
+    redirect_to reports_url, alert: t('controllers.common.notice_not_destroy', name: Report.model_name.human)
   end
 
   private
