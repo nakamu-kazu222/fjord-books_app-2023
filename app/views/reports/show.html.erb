@@ -1,6 +1,9 @@
 <h1><%= @report.title %></h1>
 <p><%= @report.content %></p>
 
+<% report = @commentable %>
+<% comments = @report.comments %>
+
 <%= render 'comments/form', commentable: @report, comment: @comment %>
 <%= render 'comments/comments', commentable: @report, comments: @comments %>
 

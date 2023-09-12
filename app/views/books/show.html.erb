@@ -1,5 +1,7 @@
 <h1><%= t('views.common.title_show', name: Book.model_name.human) %></h1>
 
+<% book = @commentable %>
+
 <div class="show-item">
   <%= render @book %>
 </div>
@@ -10,6 +12,8 @@
 
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
+
+<% comments = @book.comments %>
 
 <%= render 'comments/comments', commentable: @book, comments: @comments %>
 <%= render 'comments/form', commentable: @book, comment: @comment %>

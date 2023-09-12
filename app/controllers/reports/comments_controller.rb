@@ -10,7 +10,6 @@ class Reports::CommentsController < CommentsController
   end
 
   def render_commentable_show
-    @report = @commentable
     render 'reports/show'
   end
 end

@@ -10,7 +10,6 @@ class Books::CommentsController < CommentsController
   end
 
   def render_commentable_show
-    @book = @commentable
     render 'books/show'
   end
 end
