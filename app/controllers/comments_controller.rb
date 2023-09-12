@@ -40,8 +40,8 @@ class CommentsController < ApplicationController
   end
 
   def authorize_comment
-    unless current_user == @comment.user
-      redirect_to root_path
-    end
+    return if current_user == @comment.user
+
+    redirect_to root_path
   end
 end
