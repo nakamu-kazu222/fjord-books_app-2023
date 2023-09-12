@@ -2,6 +2,7 @@
 
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
+  before_action :authorize_comment, only: %i[edit update destroy]
 
   def edit; end
 
@@ -37,5 +38,11 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def authorize_comment
+    unless current_user == @comment.user
+      redirect_to root_path
+    end
   end
 end
