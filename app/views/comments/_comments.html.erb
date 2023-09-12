@@ -9,7 +9,7 @@
       <%= comment.user.name_or_email %>
     </p>
     <p>
-      <strong><%= Comment.human_attribute_name(:created_at) %>:</strong> <%= comment.created_at %>
+      <strong><%= Comment.human_attribute_name(:created_at) %>:</strong> <%= l(comment.created_at) %>
     </p>
     <% if current_user == comment.user %>
       <%= form_with model: [commentable, comment], url: edit_polymorphic_path([commentable, comment]), method: :get do |f| %>
