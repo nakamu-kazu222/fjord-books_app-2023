@@ -1,5 +1,5 @@
 <h2><%= Comment.model_name.human %></h2>
-<% comments.each do |comment| %>
+<% commentable.comments.each do |comment| %>
   <% if comment.persisted? %>
     <p>
       <strong><%= Comment.human_attribute_name(:content) %>:</strong> <%= comment.content %>
