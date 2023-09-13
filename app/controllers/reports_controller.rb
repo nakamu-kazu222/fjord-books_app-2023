@@ -2,7 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show]
-  before_action :authorize_report, only: %i[edit update destroy]
+  before_action :set_authorized_report, only: %i[edit update destroy]
 
   def index
     @reports = Report.order(:id).page(params[:page])
@@ -53,7 +53,7 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :content)
   end
 
-  def authorize_report
+  def set_authorized_report
     @report = current_user.reports.find(params[:id])
   end
 end
