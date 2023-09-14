@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-  def set_authorized_report
+  def set_authorized_comment
     @comment = current_user.comments.find(params[:id])
   end
 end
