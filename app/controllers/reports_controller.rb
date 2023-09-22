@@ -20,14 +20,23 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
-    save_report_and_mention(:new)
+    if @report.save
+      @report.save_report_and_mention_with_content(@report.content)
+      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update
-    return unless @report.update(report_params)
-
-    save_report_and_mention(:edit)
+    if @report.update(report_params)
+      @report.save_report_and_mention_with_content(@report.content)
+      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
+
 
   def destroy
     ActiveRecord::Base.transaction do
@@ -55,22 +64,4 @@ end
 def extract_mentioned_report_ids(text)
   url_pattern = %r{http://localhost:3000/reports/(\d+)}
   text.scan(url_pattern).flatten.map(&:to_i)
-end
-
-def save_report_and_mention(view)
-  if @report.save
-    mentioned_report_ids = extract_mentioned_report_ids(@report.content)
-    mentioned_reports = Report.where(id: mentioned_report_ids)
-
-    mentioned_reports.each do |mentioned_report|
-      unless mentioned_report.mentioned_reports.include?(@report)
-        mentioned_report.mentioned_reports << @report
-        mentioned_report.save
-      end
-    end
-
-    redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-  else
-    render view, status: :unprocessable_entity
-  end
 end

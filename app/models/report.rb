@@ -17,4 +17,16 @@ class Report < ApplicationRecord
   def created_on
     created_at.to_date
   end
+
+  def save_report_and_mention_with_content(content)
+    mentioned_report_ids = extract_mentioned_report_ids(content)
+    mentioned_reports = Report.where(id: mentioned_report_ids)
+
+    mentioned_reports.each do |mentioned_report|
+      unless mentioned_report.mentioned_reports.include?(self)
+        mentioned_report.mentioned_reports << self
+        mentioned_report.save
+      end
+    end
+  end
 end
