@@ -19,13 +19,21 @@ class Report < ApplicationRecord
   end
 
   def save_report_and_mention_with_content(content)
-    mentioned_report_ids = extract_mentioned_report_ids(content)
-    mentioned_reports = Report.where(id: mentioned_report_ids)
+    ActiveRecord::Base.transaction do
+      begin
+        save
 
-    mentioned_reports.each do |mentioned_report|
-      unless mentioned_report.mentioned_reports.include?(self)
-        mentioned_report.mentioned_reports << self
-        mentioned_report.save
+        mentioned_report_ids = extract_mentioned_report_ids(content)
+        mentioned_reports = Report.where(id: mentioned_report_ids)
+
+        mentioned_reports.each do |mentioned_report|
+          unless mentioned_report.mentioned_reports.include?(self)
+            mentioned_report.mentioned_reports << self
+            mentioned_report.save
+          end
+        end
+      rescue StandardError => e
+        raise ActiveRecord::Rollback
       end
     end
   end
