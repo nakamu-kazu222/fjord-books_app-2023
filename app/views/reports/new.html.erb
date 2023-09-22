@@ -1,0 +1,5 @@
+<h1><%= Report.human_attribute_name(:new_report) %></h1>
+
+<%= render 'form', report: @report %>
+
+<%= link_to t('views.common.back',name: Report.model_name.human), reports_path %>

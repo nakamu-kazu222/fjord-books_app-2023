@@ -1,0 +1,12 @@
+<%= form_with model: [commentable, comment] do |f| %>
+  <%= render 'shared/error_messages', object: comment %>
+
+  <div class="field">
+    <%= f.label Comment.human_attribute_name(:content) %>
+    <%= f.text_area :content, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

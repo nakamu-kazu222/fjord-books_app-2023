@@ -1,0 +1,23 @@
+<h2><%= Comment.model_name.human %></h2>
+<% commentable.comments.each do |comment| %>
+  <% if comment.persisted? %>
+    <p>
+      <strong><%= Comment.human_attribute_name(:content) %>:</strong> <%= comment.content %>
+    </p>
+    <p>
+      <strong><%= User.model_name.human %>: </strong>
+      <%= comment.user.name_or_email %>
+    </p>
+    <p>
+      <strong><%= Comment.human_attribute_name(:created_at) %>:</strong> <%= l(comment.created_at) %>
+    </p>
+    <% if current_user == comment.user %>
+      <%= form_with model: [commentable, comment], url: edit_polymorphic_path([commentable, comment]), method: :get do |f| %>
+        <%= f.submit Comment.human_attribute_name(:edit) %>
+      <% end %>
+      <%= form_with model: [commentable, comment], method: :delete, data: { confirm: t('views.common.delete_confirm') } do |f| %>
+        <%= f.submit Comment.human_attribute_name(:destroy) %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
