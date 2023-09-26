@@ -7,8 +7,11 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true, allow_blank: true
 
-  has_many :mentions, class_name: 'ReportMention', foreign_key: 'mentioning_report_id', dependent: :destroy, inverse_of: :mentioning_report
-  has_many :mentioned_reports, through: :mentions, source: :mentioned_report
+  has_many :mentioning, class_name: 'ReportMention', foreign_key: 'mentioning_report_id', dependent: :destroy, inverse_of: :mentioning_report
+  has_many :mentioned_reports, through: :mentioning, source: :mentioned_report, inverse_of: :mentioned
+
+  has_many :mentioned, class_name: 'ReportMention', foreign_key: 'mentioned_report_id', dependent: :destroy, inverse_of: :mentioned_report
+  has_many :mentioning_reports, through: :mentioned, source: :mentioning_report, inverse_of: :mentioning
 
   def editable?(target_user)
     user == target_user
@@ -22,7 +25,6 @@ class Report < ApplicationRecord
     ActiveRecord::Base.transaction do
       begin
         save
-
         mentioned_report_ids = extract_mentioned_report_ids(content)
         mentioned_reports = Report.where(id: mentioned_report_ids)
 

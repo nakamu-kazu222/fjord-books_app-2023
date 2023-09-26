@@ -40,8 +40,6 @@ class ReportsController < ApplicationController
 
   def destroy
     ActiveRecord::Base.transaction do
-      ReportMention.where(mentioning_report: @report).destroy_all
-      ReportMention.where(mentioned_report: @report).destroy_all
       @report.destroy
     end
 
