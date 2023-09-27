@@ -23,7 +23,7 @@ class Report < ApplicationRecord
 
   def extract_mentioned_report_ids(text)
     url_pattern = %r{http://localhost:3000/reports/(\d+)}
-    text.scan(url_pattern).flatten.map(&:to_i)
+    text.scan(url_pattern).flatten.map(&:to_i).uniq
   end
 
   def save_report_and_mention_with_content(content)
