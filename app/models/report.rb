@@ -34,8 +34,6 @@ class Report < ApplicationRecord
             mentioned_report.save
           end
         end
-      rescue StandardError => e
-        raise ActiveRecord::Rollback
       end
     end
   end
