@@ -42,9 +42,9 @@ class ReportsController < ApplicationController
     ActiveRecord::Base.transaction do
       @report.destroy
     end
-
     redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
-  rescue ActiveRecord::InvalidForeignKey
+  rescue StandardError => e
+    Rails.logger.error "Error during destroy action: #{e.message}"
     redirect_to reports_url, alert: t('controllers.common.notice_not_destroy', name: Report.model_name.human)
   end
 
