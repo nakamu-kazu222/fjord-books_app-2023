@@ -43,4 +43,10 @@ class Report < ApplicationRecord
     Rails.logger.error "Error during save_report_and_mention_with_content: #{e.message}"
     raise ActiveRecord::Rollback
   end
+
+  def remove_mentions
+    mentioned_reports.each do |mentioned_report|
+      mentioned_report.mentioned_reports.delete(self)
+    end
+  end
 end
