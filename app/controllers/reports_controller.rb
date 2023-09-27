@@ -37,7 +37,6 @@ class ReportsController < ApplicationController
     end
   end
 
-
   def destroy
     ActiveRecord::Base.transaction do
       @report.remove_mentions
