@@ -58,8 +58,3 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :content)
   end
 end
-
-def extract_mentioned_report_ids(text)
-  url_pattern = %r{http://localhost:3000/reports/(\d+)}
-  text.scan(url_pattern).flatten.map(&:to_i)
-end

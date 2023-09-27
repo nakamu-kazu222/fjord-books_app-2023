@@ -21,20 +21,26 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
+  def extract_mentioned_report_ids(text)
+    url_pattern = %r{http://localhost:3000/reports/(\d+)}
+    text.scan(url_pattern).flatten.map(&:to_i)
+  end
+
   def save_report_and_mention_with_content(content)
     ActiveRecord::Base.transaction do
-      begin
-        save
-        mentioned_report_ids = extract_mentioned_report_ids(content)
-        mentioned_reports = Report.where(id: mentioned_report_ids)
+      save!
+      mentioned_report_ids = extract_mentioned_report_ids(content)
+      mentioned_reports = Report.where(id: mentioned_report_ids)
 
-        mentioned_reports.each do |mentioned_report|
-          unless mentioned_report.mentioned_reports.include?(self)
-            mentioned_report.mentioned_reports << self
-            mentioned_report.save
-          end
+      mentioned_reports.each do |mentioned_report|
+        unless mentioned_report.mentioned_reports.include?(self)
+          mentioned_report.mentioned_reports << self
+          mentioned_report.save!
         end
       end
     end
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error "Error during save_report_and_mention_with_content: #{e.message}"
+    raise ActiveRecord::Rollback
   end
 end
