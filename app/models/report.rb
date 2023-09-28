@@ -26,7 +26,7 @@ class Report < ApplicationRecord
     text.scan(url_pattern).flatten.map(&:to_i).uniq
   end
 
-  def save_report_and_mention_with_content(content)
+  def save_report_and_mention_with_content
     ActiveRecord::Base.transaction do
       save!
       mentioned_report_ids = extract_mentioned_report_ids(content)
