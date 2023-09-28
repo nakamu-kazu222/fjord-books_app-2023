@@ -43,10 +43,4 @@ class Report < ApplicationRecord
       end
     end
   end
-
-  def remove_mentions
-    mentioned_reports.each do |mentioned_report|
-      mentioned_report.mentioned_reports.delete(self)
-    end
-  end
 end
