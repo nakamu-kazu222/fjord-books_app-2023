@@ -33,12 +33,19 @@ class Report < ApplicationRecord
       existing_mentioned_report_ids = mentioned_reports.pluck(:id)
 
       new_mentioned_report_ids = mentioned_report_ids - existing_mentioned_report_ids
-      mentioned_reports = Report.where(id: new_mentioned_report_ids)
+      mentioned_reports_to_add = Report.where(id: new_mentioned_report_ids)
 
       mentioned_reports.each do |mentioned_report|
+        unless mentioned_reports_to_add.include?(mentioned_report)
+          mentioned_reports.delete(mentioned_report)
+          mentioned_report.mentioned_reports.delete(self)
+        end
+      end
+
+      mentioned_reports_to_add.each do |mentioned_report|
         unless mentioned_report.mentioned_reports.include?(self)
+          mentioned_reports << mentioned_report
           mentioned_report.mentioned_reports << self
-          mentioned_report.save!
         end
       end
     end
