@@ -30,7 +30,10 @@ class Report < ApplicationRecord
     ActiveRecord::Base.transaction do
       save!
       mentioned_report_ids = extract_mentioned_report_ids(content)
-      mentioned_reports = Report.where(id: mentioned_report_ids)
+      existing_mentioned_report_ids = mentioned_reports.pluck(:id)
+
+      new_mentioned_report_ids = mentioned_report_ids - existing_mentioned_report_ids
+      mentioned_reports = Report.where(id: new_mentioned_report_ids)
 
       mentioned_reports.each do |mentioned_report|
         unless mentioned_report.mentioned_reports.include?(self)
