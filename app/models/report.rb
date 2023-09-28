@@ -39,9 +39,6 @@ class Report < ApplicationRecord
         end
       end
     end
-  rescue ActiveRecord::RecordInvalid => e
-    Rails.logger.error "Error during save_report_and_mention_with_content: #{e.message}"
-    raise ActiveRecord::Rollback
   end
 
   def remove_mentions
