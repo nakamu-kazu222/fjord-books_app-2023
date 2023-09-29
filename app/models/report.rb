@@ -36,10 +36,8 @@ class Report < ApplicationRecord
       mentioned_reports_to_add = Report.where(id: new_mentioned_report_ids)
 
       mentioned_reports.each do |mentioned_report|
-        unless mentioned_reports_to_add.include?(mentioned_report)
-          mentioned_reports.delete(mentioned_report)
-          mentioned_report.mentioned_reports.delete(self)
-        end
+        mentioned_reports.delete(mentioned_report)
+        mentioned_report.mentioned_reports.delete(self)
       end
 
       mentioned_reports_to_add.each do |mentioned_report|
