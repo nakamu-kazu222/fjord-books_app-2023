@@ -30,21 +30,15 @@ class Report < ApplicationRecord
     ActiveRecord::Base.transaction do
       save!
       mentioned_report_ids = extract_mentioned_report_ids(content)
-      existing_mentioned_report_ids = mentioned_reports.pluck(:id)
+      existing_mentioned_report_ids = mentioning_reports.pluck(:id)
 
       new_mentioned_report_ids = mentioned_report_ids - existing_mentioned_report_ids
-      mentioned_reports_to_add = Report.where(id: new_mentioned_report_ids)
+      delete_target_report_ids = existing_mentioned_report_ids - mentioned_report_ids
 
-      mentioned_reports.each do |mentioned_report|
-        mentioned_reports.delete(mentioned_report)
-        mentioned_report.mentioned_reports.delete(self)
-      end
+      ReportMention.where(mentioning_report_id: id, mentioned_report_id: delete_target_report_ids).find_each(&:destroy)
 
-      mentioned_reports_to_add.each do |mentioned_report|
-        unless mentioned_report.mentioned_reports.include?(self)
-          mentioned_reports << mentioned_report
-          mentioned_report.mentioned_reports << self
-        end
+      new_mentioned_report_ids.each do |mentioned_report_id|
+        ReportMention.create(mentioning_report_id: mentioned_report_id, mentioned_report_id: id)
       end
     end
   end
