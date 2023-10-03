@@ -35,10 +35,10 @@ class Report < ApplicationRecord
       new_mentioned_report_ids = mentioned_report_ids - existing_mentioned_report_ids
       delete_target_report_ids = existing_mentioned_report_ids - mentioned_report_ids
 
-      ReportMention.where(mentioned_report_id: id, mentioning_report_id: delete_target_report_ids).find_each(&:destroy)
+      ReportMention.where(mentioned_report_id: id, mentioning_report_id: delete_target_report_ids).find_each(&:destroy!)
 
       new_mentioned_report_ids.each do |mentioned_report_id|
-        ReportMention.create(mentioned_report_id: id, mentioning_report_id: mentioned_report_id)
+        ReportMention.create!(mentioned_report_id: id, mentioning_report_id: mentioned_report_id)
       end
     end
   end
