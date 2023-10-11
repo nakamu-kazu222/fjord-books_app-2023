@@ -23,14 +23,13 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'save_mentions' do
-    assert_equal [], @report_user1.send(:save_mentions)
-
-    assert_equal [@report_user1], @report_user3.send(:save_mentions)
-
     @report_user3.update(content: 'http://localhost:3000/reports/1 http://localhost:3000/reports/2')
-    assert_equal [@report_user1, @report_user2], Report.find(@report_user3.id).send(:save_mentions)
+    assert_equal [@report_user1, @report_user2], @report_user3.reload.mentioning_reports
 
     @report_user3.update(content: 'http://localhost:3000/reports/1')
-    assert_equal [@report_user1], Report.find(@report_user3.id).send(:save_mentions)
+    assert_equal [@report_user1], @report_user3.reload.mentioning_reports
+
+    @report_user3.destroy
+    assert_not_includes @report_user1.mentioning_reports, @report_user3
   end
 end
