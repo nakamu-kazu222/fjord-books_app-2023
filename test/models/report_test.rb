@@ -4,12 +4,12 @@ require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
   setup do
-    @user1 = users(:user1)
-    @user2 = users(:user2)
-    @user3 = users(:user3)
-    @report_user1 = reports(:report_user1)
-    @report_user2 = reports(:report_user2)
-    @report_user3 = reports(:report_user3)
+    @user1 = users(:alice)
+    @user2 = users(:bob)
+    @user3 = users(:carol)
+    @report_user1 = reports(:report_alice)
+    @report_user2 = reports(:report_bob)
+    @report_user3 = reports(:report_carol)
   end
 
   test 'editable?' do

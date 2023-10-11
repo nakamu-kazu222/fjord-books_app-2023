@@ -1,19 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: user1
+comment1:
+  user: alice
   commentable: one
   commentable_type: Commentable
   content: MyString
 
-two:
-  user: user2
+comment2:
+  user: bob
   commentable: two
   commentable_type: Commentable
   content: MyString
 
-three:
-  user: user3
+comment3:
+  user: carol
   commentable: three
   commentable_type: Commentable
   content: MyString

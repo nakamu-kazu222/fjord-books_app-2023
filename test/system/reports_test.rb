@@ -5,12 +5,12 @@ require 'application_system_test_case'
 class ReportsTest < ApplicationSystemTestCase
   setup do
     visit new_user_session_url
-    fill_in 'Eメール', with: 'user1@test'
+    fill_in 'Eメール', with: 'alice@test'
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
     assert_text 'ログインしました。'
 
-    @report = reports(:report_user1)
+    @report = reports(:report_alice)
   end
 
   test 'visiting the index' do
