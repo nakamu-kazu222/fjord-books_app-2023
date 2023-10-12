@@ -1,11 +1,23 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  title: MyString
-  content: MyText
+report_alice:
+  id: 1
+  user: alice
+  title: test1
+  content: hello
+  created_at: Wed, 04 Oct 2023 00:00:00 JST +09:00
 
-two:
-  user: two
-  title: MyString
-  content: MyText
+
+report_bob:
+  id: 2
+  user: bob
+  title: test2
+  content: hello
+  created_at: Wed, 04 Oct 2023 01:00:00 JST +09:00
+
+report_carol:
+  id: 3
+  user: carol
+  title: test3
+  content: http://localhost:3000/reports/1
+  created_at: Wed, 04 Oct 2023 02:00:00 JST +09:00

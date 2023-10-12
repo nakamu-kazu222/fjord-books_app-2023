@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  memo: MyText
+sakura:
+  title: 桜の森の満開の下
+  memo: 美容・ダイエット
 
-two:
-  title: MyString
-  memo: MyText
+kagaku:
+  title: 化学調味料
+  memo: 料理・グルメ
